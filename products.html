@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rainbow Flowers - Products</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background-image: url('https://img.freepik.com/premium-photo/rose-pink-gold-floral-frame-flower-frame-background_762785-41070.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .top-login-bar {
+      background-color: #fff0f5;
+      color: #ff4d88;
+      padding: 10px 30px;
+      font-weight: bold;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .top-login-bar a {
+      color: #ff4d88;
+      text-decoration: none;
+      margin-left: 20px;
+    }
+
+    header {
+      background: rgba(255,255,255,0.9);
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ff4d88;
+    }
+
+    nav a {
+      margin: 0 15px;
+      color: #333;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: #ff4d88;
+    }
+
+    .products-section, .cart-section {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 20px;
+      background-color: rgba(255,255,255,0.95);
+      border-radius: 12px;
+    }
+
+    .products-title, .cart-title {
+      text-align: center;
+      color: #ff4d88;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(255, 105, 135, 0.2);
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+
+    .product-card:hover {
+      transform: scale(1.03);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .product-content {
+      padding: 1rem;
+    }
+
+    /* Rainbow colors */
+    .red { color: #e63946; }
+    .orange { color: #f4a261; }
+    .yellow { color: #e9c46a; }
+    .green { color: #2a9d8f; }
+    .blue { color: #264653; }
+    .indigo { color: #5a189a; }
+    .violet { color: #9d4edd; }
+
+    .product-name {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin: 0.5rem 0;
+    }
+
+    .product-desc {
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    .product-price {
+      color: #e60073;
+      font-weight: bold;
+      margin-top: 0.5rem;
+    }
+
+    .add-to-cart {
+      margin-top: 1rem;
+      width: 100%;
+      padding: 10px;
+      background-color: #ff4d88;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .add-to-cart:hover {
+      background-color: #e60073;
+    }
+
+    .pagination {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .pagination button {
+      background-color: #ff4d88;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 0 5px;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .pagination button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    /* Cart Styles */
+    .cart-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .cart-item {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(255, 105, 135, 0.2);
+      overflow: hidden;
+      max-width: 500px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .cart-item img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .cart-item h3 {
+      margin: 1rem 0 0.5rem;
+      font-weight: bold;
+      color: #ff4d88;
+    }
+
+    .cart-item p {
+      color: #555;
+      font-size: 1rem;
+      margin: 0.25rem 0;
+      text-align: center;
+    }
+
+    .back-btn {
+      display: block;
+      margin: 2rem auto 0;
+      background-color: #ff4d88;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+      text-align: center;
+      max-width: 200px;
+    }
+
+    .back-btn:hover {
+      background-color: #e60073;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        margin-top: 10px;
+      }
+
+      .cart-item {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Rainbow Flowers</div>
+    <nav>
+      <a href="#">Login</a>  
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Products</a>
+      <a href="#">Reviews</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Products Section -->
+  <section id="productsSection" class="products-section">
+    <h2 class="products-title">Products</h2>
+    <div id="productGrid" class="product-grid"></div>
+    <div class="pagination">
+      <button id="prevBtn" onclick="prevPage()">Previous</button>
+      <button id="nextBtn" onclick="nextPage()">Next</button>
+    </div>
+  </section>
+
+  <!-- Cart Section (Initially hidden) -->
+  <section id="cartSection" class="cart-section" style="display:none;">
+    <h2 class="cart-title">Your Cart</h2>
+    <div id="cartContent" class="cart-content"></div>
+    <button class="back-btn" onclick="goBackToProducts()">Back to Products</button>
+  </section>
+
+  <script>
+    const products = [
+      { name: "Roses(గులాబీ)", desc: "Timeless and elegant, red roses express deep love, passion, and beauty.", price: "₹25.00", img: "https://tse1.mm.bing.net/th/id/OIP.GlRvvWn41_uQn0PYjrX75gHaHa?cb=ucfimgc2&rs=1&pid=ImgDetMain&o=7&rm=3", colorClass: "red" },
+      { name: "Jasmine(మల్లెపూవు)", desc: "Fragrant white jasmine flowers that symbolize purity and grace.", price: "₹18.00", img: "https://thumbs.dreamstime.com/b/jasmine-flower-full-as-background-green-leaves-white-flowers-33804277.jpg", colorClass: "orange" },
+      { name: "Sunflowers(పొద్దుతిరుగుడు పువ్వు)", desc: "Bright and cheerful sunflowers that radiate happiness and warmth.", price: "₹20.00", img: "https://thumbs.dreamstime.com/b/vibrant-flowers-generative-ai-stunning-photo-capturing-vivid-colors-variety-arranged-natural-organic-way-279811950.jpg", colorClass: "yellow" },
+      { name: "Lily(లిల్లీ పువ్వు)", desc: "Elegant lilies with soft petals, symbolizing purity, renewal, and beauty.", price: "₹22.00", img: "https://5.imimg.com/data5/BI/RT/MY-30742137/lily-flowers-500x500.jpg", colorClass: "green" },
+      { name: "Orchids(ఓర్చిడ్ పువ్వు)", desc: "Exotic and graceful orchids that embody luxury, elegance, and strength.", price: "₹28.00", img: "https://thumbs.dreamstime.com/b/beautiful-orchids-garden-winter-spring-189171612.jpg", colorClass: "blue" },
+      { name: "MariGold(బంతి పువ్వు)", desc: "Vibrant marigolds that symbolize warmth, positivity, and festive energys.", price: "₹19.00", img: "https://cdn.britannica.com/76/118076-050-756CD4F5/French-marigold.jpg", colorClass: "indigo" },
+      { name: "Hibiscus(మందారమ్)", desc: "Bold and tropical hibiscus blooms that symbolize beauty, passion, and vitality.", price: "₹26.00", img: "https://tse2.mm.bing.net/th/id/OIP.0wJScLzdCbmHzHD71ISvhgHaE7?cb=ucfimgc2&rs=1&pid=ImgDetMain&o=7&rm=3", colorClass: "violet" },
+      { name: "Crossandra(కనకాంబరాలు)", desc: "Vibrant orange Crossandra blooms, symbolizing cheerfulness and often used in traditional South Indian adornments.", price: "₹17.00", img: "https://www.southernliving.com/thmb/uVy3L_qbGyCCd6OQF_RwUEvoEH4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/gettyimages-483069748-2000-e511755b798d4234920bd794b3cdcae7.jpg", colorClass: "red" },
+      { name: "Lotus(తామర పువ్వు)", desc: "A sacred and serene flower, the lotus symbolizes purity, enlightenment, and spiritual awakening.", price: "₹15.00", img: "https://cdn.pixabay.com/photo/2021/05/28/00/18/lotus-6289463_1280.jpg", colorClass: "orange" },
+      { name: "Wild Jasmine(సన్నజాజి)", desc: "Delicately small and highly fragrant, Sannajaji flowers are cherished for their natural beauty and traditional charm.", price: "₹24.00", img: "https://th.bing.com/th/id/R.cbf09ecbee7d874c6e5265c5d39d8387?rik=E%2bNvdXsgU17c2Q&riu=http%3a%2f%2fleisureandme.com%2fwp-content%2fuploads%2f2014%2f07%2fwild-Jasmine-flowers.jpg&ehk=d11TWQ%2ffevMedSSUuY9rcfFqiktSJHnPoz598frvwho%3d&risl=&pid=ImgRaw&r=0", colorClass: "yellow" },
+      { name: "Yellow marigold(చెమంతి పువ్వు)", desc: "Bright and full-bloom Chrysanthemum flowers that symbolize longevity, joy, and celebration.", price: "₹21.00", img: "https://thumbs.dreamstime.com/b/small-purple-chrysanthemums-beautiful-white-yellow-45964207.jpg", colorClass: "green" },
+      { name: "Zinnia(జిన్నియా పువ్వు)", desc: "Colorful and cheerful Zinnia flowers that symbolize endurance, remembrance, and lasting affection.", price: "₹23.00", img: "https://i.pinimg.com/originals/f4/42/63/f442636f0a2cad22ee852f617dfecaa9.jpg", colorClass: "blue" },
+      { name: "Tulip(ట్యూలిప్ పువ్వు)", desc: "Elegant tulip flowers symbolizing perfect love and fresh beginnings.", price: "₹16.00", img: "https://th.bing.com/th/id/R.20262e6b15efc965a1abae7a4eb05125?rik=BoPzNMLM3NUNzA&riu=http%3a%2f%2fimages5.fanpop.com%2fimage%2fphotos%2f28500000%2fTulips-tulips-28594078-1920-1200.jpg&ehk=DuyoqqgE7%2bb%2bjk2wMYT5gkvrzlW%2bX1fAKQxU7Z%2fX7bs%3d&risl=1&pid=ImgRaw&r=0", colorClass: "indigo" },
+      { name: "Sampangi (సంపంగి)", desc: "Sampangi is a small, fragrant white flower commonly used in Telugu culture for decoration and religious occasions.", price: "₹27.00", img: "https://img2.exportersindia.com/product_images/bc-full/2023/1/10028014/sampangi-flower-1673426229-6714050.jpeg", colorClass: "violet" },
+      { name: "Ixora Red Mini(ముల్లు గులాబి)", desc: "Compact Ixora Red Mini with bright red clusters, perfect for adding a splash of color to any garden or balcony.", price: "₹18.00", img: "https://nurserynisarga.in/wp-content/uploads/2020/09/Mini-Ixora-Plant-01.webp", colorClass: "red" },
+    ];
+
+    let currentPage = 1;
+    const productsPerPage = 4;
+
+    function renderProducts() {
+      const start = (currentPage - 1) * productsPerPage;
+      const end = start + productsPerPage;
+      const paginatedProducts = products.slice(start, end);
+      const grid = document.getElementById('productGrid');
+      grid.innerHTML = '';
+
+      paginatedProducts.forEach((product, index) => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `
+          <img src="${product.img}" alt="${product.name}" class="product-image" />
+          <div class="product-content">
+            <h3 class="product-name ${product.colorClass}">${product.name}</h3>
+            <p class="product-desc">${product.desc}</p>
+            <p class="product-price">${product.price}</p>
+            <button class="add-to-cart" onclick="addToCart(${start + index})">Add to Cart</button>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+
+      document.getElementById('prevBtn').disabled = currentPage === 1;
+      document.getElementById('nextBtn').disabled = end >= products.length;
+    }
+
+    function nextPage() {
+      if ((currentPage * productsPerPage) < products.length) {
+        currentPage++;
+        renderProducts();
+      }
+    }
+
+    function prevPage() {
+      if (currentPage > 1) {
+        currentPage--;
+        renderProducts();
+      }
+    }
+
+    function addToCart(productIndex) {
+      const product = products[productIndex];
+      // Hide products section and show cart section
+      document.getElementById('productsSection').style.display = 'none';
+      const cartSection = document.getElementById('cartSection');
+      cartSection.style.display = 'block';
+
+      const cartContent = document.getElementById('cartContent');
+      cartContent.innerHTML = `
+        <div class="cart-item">
+          <img src="${product.img}" alt="${product.name}" />
+          <h3 class="${product.colorClass}">${product.name}</h3>
+          <p>${product.desc}</p>
+          <p class="product-price">${product.price}</p>
+        </div>
+      `;
+    }
+
+    function goBackToProducts() {
+      document.getElementById('cartSection').style.display = 'none';
+      document.getElementById('productsSection').style.display = 'block';
+    }
+
+    window.onload = renderProducts;
+  </script>
+</body>
+</html>

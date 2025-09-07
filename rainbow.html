@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rainbow Flowers</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Quicksand',sans-serif; }
+    body { min-height:100vh; background:#f9f9f9; }
+
+    /* Navbar */
+    header {
+      width:100%;
+      padding:15px 40px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background: rgba(0,0,0,0.7);
+      position: fixed;
+      top:0; left:0;
+      z-index:1000;
+      color:white;
+    }
+    .logo {
+      font-size:28px;
+      font-weight:bold;
+      background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    nav a {
+      margin-left:20px;
+      color:white;
+      text-decoration:none;
+      font-weight:600;
+      cursor:pointer;
+      transition:color 0.3s;
+    }
+    nav a:hover { color:#ffd1dc; }
+
+    /* Sections */
+    section { display:none; padding-top:100px; min-height:100vh; }
+
+    /* Login Section */
+    #login-section {
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+      background: url('https://img.freepik.com/premium-photo/rose-pink-gold-floral-frame-flower-frame-background_762785-41070.jpg') no-repeat center center/cover;
+    }
+    .login-container {
+      background-color: rgba(255,255,255,0.95);
+      padding:40px;
+      border-radius:15px;
+      max-width:400px;
+      width:90%;
+      text-align:center;
+      box-shadow:0 8px 30px rgba(255,105,135,0.2);
+    }
+    .login-container h2 { color:#ff4d88; margin-bottom:20px; }
+    .login-container input {
+      width:100%;
+      padding:10px;
+      margin:10px 0;
+      border-radius:8px;
+      border:1px solid #ccc;
+    }
+    .btn {
+      width:100%;
+      padding:12px;
+      background:#ff4d88;
+      color:white;
+      border:none;
+      border-radius:8px;
+      font-weight:bold;
+      cursor:pointer;
+      margin-top:10px;
+    }
+    .btn:hover { background:#e60073; }
+
+    .social-login { margin-top:15px; }
+    .social-login button {
+      width:100%;
+      padding:10px;
+      margin-bottom:10px;
+      border-radius:8px;
+      border:none;
+      font-weight:bold;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      font-size:0.95rem;
+      transition:background 0.3s;
+    }
+    .google-btn { background:#db4437; color:white; }
+    .google-btn:hover { background:#c23321; }
+    .facebook-btn { background:#3b5998; color:white; }
+    .facebook-btn:hover { background:#2d4373; }
+
+    .signup { margin-top:10px; font-size:0.95rem; }
+    .signup a { color:#ff4d88; font-weight:bold; text-decoration:none; }
+    .signup a:hover { text-decoration:underline; }
+
+    /* Home Section */
+    #home-section {
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      color:white;
+      height:100vh;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                  url('https://img.freepik.com/premium-photo/rose-pink-gold-floral-frame-flower-frame-background_762785-41070.jpg') no-repeat center center/cover;
+      flex-direction:column;
+    }
+    #home-section h1 { font-size:64px; margin-bottom:20px; }
+    #home-section p { font-size:18px; max-width:600px; margin:0 auto 30px; line-height:1.6;}
+    #home-section button { padding:12px 30px; font-size:16px; border:none; border-radius:25px; background:#f5f5f5; color:#333; cursor:pointer; font-weight:bold; transition:all 0.3s ease; }
+    #home-section button:hover { background:#ddd; }
+
+    /* About Section */
+    #about-section {
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:100px 50px;
+      gap:40px;
+      color:white;
+      min-height:100vh;
+      background: url('https://img.freepik.com/premium-photo/rose-pink-gold-floral-frame-flower-frame-background_762785-41070.jpg') no-repeat center center/cover;
+    }
+    .about-text { flex:1; max-width:600px; }
+    .about-text h2 { font-size:50px; margin-bottom:20px; text-shadow:2px2px5px rgba(0,0,0,0.5);}
+    .about-text p { font-size:18px; line-height:1.6; margin-bottom:30px; text-shadow:1px1px3px rgba(0,0,0,0.5);}
+    .about-text button { padding:12px 30px; font-size:16px; border:none; border-radius:25px; background:#ff69b4; color:white; cursor:pointer; font-weight:bold; transition:all 0.3s ease;}
+    .about-text button:hover { background:#ff1493; }
+    .about-image { flex:1; text-align:right; }
+    .about-image img { max-width:450px; filter: brightness(1.1) contrast(1.3) drop-shadow(0 0 20px rgba(0,0,0,0.4)); }
+
+    /* Products Section */
+    #products-section {
+      padding:100px 50px;
+      background: rgba(255,255,255,0.95);
+    }
+    .products-title { text-align:center; font-size:2rem; color:#ff4d88; margin-bottom:30px; }
+    .product-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:20px; }
+    .product-card { background:#fff; border-radius:10px; box-shadow:0 4px 15px rgba(255,105,135,0.2); overflow:hidden; transition:transform 0.3s; }
+    .product-card:hover { transform:scale(1.03); }
+    .product-image { width:100%; height:200px; object-fit:cover; }
+    .product-content { padding:15px; text-align:center; }
+    .product-name { font-weight:bold; margin:0.5rem 0; }
+    .product-desc { font-size:0.9rem; color:#777; }
+    .product-price { color:#e60073; font-weight:bold; margin-top:0.5rem; }
+    .add-to-cart { margin-top:10px; padding:10px; width:100%; border:none; border-radius:8px; background:#ff4d88; color:white; font-weight:bold; cursor:pointer; transition:0.3s; }
+    .add-to-cart:hover { background:#e60073; }
+    .pagination { text-align:center; margin-top:2rem; }
+    .pagination button { margin:0 5px; padding:10px 20px; border:none; border-radius:5px; background:#ff4d88; color:white; font-weight:bold; cursor:pointer; }
+    .pagination button:disabled { background:#ccc; cursor:not-allowed; }
+
+    /* Cart Section */
+    #cart-section { display:none; padding:50px; background: rgba(255,255,255,0.95);}
+    .cart-title { text-align:center; color:#ff4d88; font-size:2rem; margin-bottom:30px; }
+    .cart-content { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
+    .cart-item { background:#fff; border-radius:10px; box-shadow:0 4px 15px rgba(255,105,135,0.2); padding:20px; max-width:400px; text-align:center;}
+    .cart-item img { width:100%; border-radius:10px; }
+    .back-btn { display:block; margin:2rem auto 0; padding:12px 25px; border:none; border-radius:8px; background:#ff4d88; color:white; font-weight:bold; cursor:pointer; }
+    .back-btn:hover { background:#e60073; }
+
+    /* Reviews Section */
+    #reviews-section { 
+      display:none; 
+      padding:100px 50px; 
+      background: url('https://img.freepik.com/premium-photo/rose-pink-gold-floral-frame-flower-frame-background_762785-41070.jpg') no-repeat center center/cover;
+    }
+    .section-title { 
+      text-align:center; 
+      margin:40px 0 20px; 
+      font-size:2.2em; 
+      font-weight:bold; 
+      color:#b30059; 
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+      background-color: rgba(255, 255, 255, 0.7);
+      padding: 10px;
+      border-radius: 10px;
+    }
+    .reviews-container { 
+      display:grid; 
+      grid-template-columns:repeat(3,1fr); 
+      gap:20px; 
+      max-width:1200px; 
+      margin:auto; 
+    }
+    @media (max-width:900px) { .reviews-container { grid-template-columns:repeat(2,1fr); } }
+    @media (max-width:600px) { .reviews-container { grid-template-columns:1fr; } }
+    .card { 
+      background: rgba(255,255,255,0.8); 
+      padding:20px; 
+      border-radius:12px; 
+      text-align:center; 
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2); 
+      transition: transform 0.3s ease, box-shadow 0.3s ease; 
+      display:flex; 
+      flex-direction:column; 
+      justify-content:space-between; 
+    }
+    .card:hover { transform:scale(1.05); box-shadow:0 6px 15px rgba(0,0,0,0.3);}
+    .name { font-weight:bold; margin-bottom:8px; font-size:1.1em; color:#222; }
+    .review-text { font-size:0.9em; color:#333; margin-bottom:12px; line-height:1.4em; flex-grow:1; }
+    .ratings { font-size:1.1em; display:flex; justify-content:center; align-items:center; gap:10px; }
+    .stars { color: gold; font-size:1.3em; }
+    .emojis { font-size:1.3em; }
+
+    /* Contact Section */
+    #contact-section { 
+      display:none; 
+      padding:100px 50px; 
+      background: url('https://img.freepik.com/premium-photo/rose-pink-gold-floral-frame-flower-frame-background_762785-41070.jpg') no-repeat center center/cover;
+    }
+    .contact-container {
+      display: flex;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      overflow: hidden;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .contact-form, .contact-info { 
+      flex: 1; 
+      padding: 30px;
+    }
+    .contact-form h2, .contact-info h2 {
+      color: #ff4d88;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .form-group { margin-bottom: 15px; }
+    label { font-weight: bold; display: block; margin-bottom: 5px; }
+    input, textarea {
+      width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #ccc;
+    }
+    textarea { height: 100px; resize: none; }
+    .contact-btn {
+      width: 100%; padding: 12px;
+      background: #ff4d88; border: none; border-radius: 6px;
+      color: #fff; font-size: 1rem; font-weight: bold; cursor: pointer;
+    }
+    .contact-btn:hover { background: #e60073; }
+    
+    /* Contact Info */
+    .info-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .info-icon {
+      width: 50px;
+      height: 50px;
+      background: #ff4d88;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      color: white;
+      font-size: 20px;
+    }
+    .info-text {
+      flex: 1;
+    }
+    
+    @media (max-width: 900px) {
+      .contact-container { flex-direction: column; }
+    }
+
+    /* Rainbow Colors */
+    .red{color:#e63946;} .orange{color:#f4a261;} .yellow{color:#e9c46a;}
+    .green{color:#2a9d8f;} .blue{color:#264653;} .indigo{color:#5a189a;} .violet{color:#9d4edd;}
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <div class="logo">Rainbow Flowers</div>
+    <nav>
+      <a onclick="showLogin()">Login</a>
+      <a onclick="showHome()">Home</a>
+      <a onclick="showAbout()">About</a>
+      <a onclick="showProducts()">Products</a>
+      <a onclick="showReviews()">Reviews</a>
+      <a onclick="showContact()">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Login Section -->
+  <section id="login-section">
+    <div class="login-container">
+      <h2>Login Rainbow Flowers</h2>
+      <form onsubmit="showHome(); return false;">
+        <input type="text" placeholder="Username" required>
+        <input type="email" placeholder="Email ID" required>
+        <input type="password" placeholder="Password" required>
+        <button type="submit" class="btn">Access Home</button>
+      </form>
+      <div class="social-login">
+        <button class="google-btn"><i class="fab fa-google"></i> Continue with Google</button>
+        <button class="facebook-btn"><i class="fab fa-facebook-f"></i> Continue with Facebook</button>
+      </div>
+      <div class="signup">
+        <p>Don't have an account? <a href="#">Register</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Home Section -->
+  <section id="home-section">
+    <h1>Rainbow Flowers</h1>
+    <p>Designed by Gowrabathina Somalatha</p>
+    <button onclick="showAbout()">About Us</button>
+  </section>
+
+  <!-- About Section -->
+  <section id="about-section">
+    <div class="about-text">
+      <h2>Flowers for Your Special Occasions</h2>
+      <p>When flowers are our inspiration to create lasting memories, whatever the occasion, our flowers will make it special.</p>
+      <button onclick="showProducts()">Go To Products</button>
+    </div>
+    <div class="about-image">
+      <img src="https://toppng.com/uploads/preview/transparent-pink-roses-bouquetpicture-115466858831eulmpevdc.png" alt="Pink Roses Bouquet">
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section id="products-section">
+    <h2 class="products-title">🌺 Products 🌺 </h2>
+    <div id="productGrid" class="product-grid"></div>
+    <div class="pagination">
+      <button id="prevBtn" onclick="prevPage()">Previous</button>
+      <button id="nextBtn" onclick="nextPage()">Next</button>
+    </div>
+  </section>
+
+  <!-- Cart Section -->
+  <section id="cart-section">
+    <h2 class="cart-title">Your Cart</h2>
+    <div id="cartContent" class="cart-content"></div>
+    <button class="back-btn" onclick="goBackToProducts()">Back to Products</button>
+  </section>
+
+  <!-- Reviews Section -->
+  <section id="reviews-section">
+    <h1 class="section-title">💐 Reviews 💐</h1>
+    <div class="reviews-container" id="reviewsContainer"></div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact-section">
+    <h1 class="section-title">📞 Contact Us 📞</h1>
+    
+    <div class="contact-container">
+      <div class="contact-form">
+        <h2>Get in Touch</h2>
+        <form>
+          <div class="form-group"><label><i class="fa fa-user"></i> Full Name:</label><input type="text" required></div>
+          <div class="form-group"><label><i class="fa fa-envelope"></i> Email Address:</label><input type="email" required></div>
+          <div class="form-group"><label><i class="fa fa-phone"></i> Contact No:</label><input type="tel" required></div>
+          <div class="form-group"><label><i class="fa fa-comment"></i> Write Message:</label><textarea required></textarea></div>
+          <button type="submit" class="contact-btn">Submit</button>
+        </form>
+      </div>
+      
+      <div class="contact-info">
+        <h2>Contact Information</h2>
+        
+        <div class="info-item">
+          <div class="info-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div class="info-text">
+            <h3>Our Address</h3>
+            <p>123 Flower Street, Garden City, Hyderabad, </p>
+          </div>
+        </div>
+        
+        <div class="info-item">
+          <div class="info-icon">
+            <i class="fas fa-phone"></i>
+          </div>
+          <div class="info-text">
+            <h3>Phone Number</h3>
+            <p>+91 9912162503</p>
+            <p>+91 9989016719</p>
+          </div>
+        </div>
+        
+        <div class="info-item">
+          <div class="info-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="info-text">
+            <h3>Email Address</h3>
+            <p>chandrakalasalla12@gmail.com</p>
+            <p>somalathagowrabathina@gmail.com</p>
+          </div>
+        </div>
+        
+        <div class="info-item">
+          <div class="info-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <div class="info-text">
+            <h3>Opening Hours</h3>
+            <p>Monday to Saturday: 9:00 AM - 8:00 PM</p>
+            <p>Sunday: 10:00 AM - 6:00 PM</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const loginSection = document.getElementById('login-section');
+    const homeSection = document.getElementById('home-section');
+    const aboutSection = document.getElementById('about-section');
+    const productsSection = document.getElementById('products-section');
+    const cartSection = document.getElementById('cart-section');
+    const reviewsSection = document.getElementById('reviews-section');
+    const contactSection = document.getElementById('contact-section');
+
+    function showLogin(){ hideAll(); loginSection.style.display='flex'; }
+    function showHome(){ hideAll(); homeSection.style.display='flex'; }
+    function showAbout(){ hideAll(); aboutSection.style.display='flex'; }
+    function showProducts(){ hideAll(); productsSection.style.display='block'; renderProducts(); }
+    function showReviews(){ hideAll(); reviewsSection.style.display='block'; renderReviews(); }
+    function showContact(){ hideAll(); contactSection.style.display='block'; }
+
+    function hideAll(){ 
+      loginSection.style.display='none'; 
+      homeSection.style.display='none'; 
+      aboutSection.style.display='none'; 
+      productsSection.style.display='none'; 
+      cartSection.style.display='none'; 
+      reviewsSection.style.display='none';
+      contactSection.style.display='none';
+    }
+
+    // Show login first
+    showLogin();
+
+    // Products data
+    const products = [
+      { name: "Roses(గులాబీ)", desc: "Timeless and elegant, red roses express deep love, passion, and beauty.", price: "₹25.00", img: "https://tse1.mm.bing.net/th/id/OIP.GlRvvWn41_uQn0PYjrX75gHaHa?cb=ucfimgc2&rs=1&pid=ImgDetMain&o=7&rm=3", colorClass: "red" },
+      { name: "Jasmine(మల్లెపూవు)", desc: "Fragrant white jasmine flowers.", price: "₹18.00", img: "https://thumbs.dreamstime.com/b/jasmine-flower-full-as-background-green-leaves-white-flowers-33804277.jpg", colorClass: "orange" },
+      { name: "Sunflowers(పొద్దుతిరుగుడు పువ్వు)", desc: "Bright and cheerful sunflowers.", price: "₹20.00", img: "https://thumbs.dreamstime.com/b/vibrant-flowers-generative-ai-stunning-photo-capturing-vivid-colors-variety-arranged-natural-organic-way-279811950.jpg", colorClass: "yellow" },
+      { name: "Lily(లిల్లీ పువ్వు)", desc: "Elegant lilies with soft petals.", price: "₹22.00", img: "https://5.imimg.com/data5/BI/RT/MY-30742137/lily-flowers-500x500.jpg", colorClass: "green" },
+      { name: "Orchids(ఓర్చిడ్ పువ్వు)", desc: "Exotic and graceful orchids.", price: "₹28.00", img: "https://thumbs.dreamstime.com/b/beautiful-orchids-garden-winter-spring-189171612.jpg", colorClass: "blue" },
+      { name: "MariGold(బంతి పువ్వు)", desc: "Vibrant marigolds.", price: "₹19.00", img: "https://cdn.britannica.com/76/118076-050-756CD4F5/French-marigold.jpg", colorClass: "indigo" },
+      { name: "Hibiscus(మందారమ్)", desc: "Bold hibiscus blooms.", price: "₹26.00", img: "https://tse2.mm.bing.net/th/id/OIP.0wJScLzdCbmHzHD71ISvhgHaE7?cb=ucfimgc2&rs=1&pid=ImgDetMain&o=7&rm=3", colorClass: "violet" },
+      { name: "Crossandra(కనకాంబరాలు)", desc: "Vibrant orange Crossandra blooms.", price: "₹17.00", img: "https://www.southernliving.com/thmb/uVy3L_qbGyCCd6OQF_RwUEvoEH4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/gettyimages-483069748-2000-e511755b798d4234920bd794b3cdcae7.jpg", colorClass: "red" },
+      { name: "Lotus(తామర పువ్వు)", desc: "Sacred lotus symbolizes purity.", price: "₹15.00", img: "https://cdn.pixabay.com/photo/2021/05/28/00/18/lotus-6289463_1280.jpg", colorClass: "orange" },
+      { name: "Wild Jasmine(సన్నజాజి)", desc: "Small, fragrant wild jasmine.", price: "₹24.00", img: "https://th.bing.com/th/id/R.cbf09ecbee7d874c6e5265c5d39d8387?rik=E%2bNvdXsgU17c2Q&riu=http%3a%2f%2fleisureandme.com%2fwp-content%2fuploads%2f2014%2f07%2fwild-Jasmine-flowers.jpg&ehk=d11TWQ%2ffevMedSSUuY9rcfFqiktSJHnPoz598frvwho%3d&risl=&pid=ImgRaw&r=0", colorClass: "yellow" },
+      { name: "Yellow marigold(చెమంతి పువ్వు)", desc: "Bright marigolds.", price: "₹21.00", img: "https://thumbs.dreamstime.com/b/small-purple-chrysanthemums-beautiful-white-yellow-45964207.jpg", colorClass: "green" },
+      { name: "Zinnia(జిన్నియా పువ్వు)", desc: "Colorful Zinnia flowers.", price: "₹23.00", img: "https://i.pinimg.com/originals/f4/42/63/f442636f0a2cad22ee852f617dfecaa9.jpg", colorClass: "blue" },
+      { name: "Tulip(ట్యూలిప్ పువ్వు)", desc: "Elegant tulip flowers.", price: "₹16.00", img: "https://th.bing.com/th/id/R.20262e6b15efc965a1abae7a4eb05125?rik=BoPzNMLM3NUNzA&riu=http%3a%2f%2fimages5.fanpop.com%2fimage%2fphotos%2f28500000%2fTulips-tulips-28594078-1920-1200.jpg&ehk=DuyoqqgE7%2bb%2bjk2wMYT5gkvrzlW%2bX1fAKQxU7Z%2fX7bs%3d&risl=1&pid=ImgRaw&r=0", colorClass: "indigo" },
+      { name: "Sampangi(సంపంగి)", desc: "Small fragrant Sampangi flower.", price: "₹27.00", img: "https://img2.exportersindia.com/product_images/bc-full/2023/1/10028014/sampangi-flower-1673426229-6714050.jpeg", colorClass: "violet" },
+      { name: "Ixora Red Mini(ముల్లు గులాబి)", desc: "Compact Ixora Red Mini.", price: "₹18.00", img: "https://nurserynisarga.in/wp-content/uploads/2020/09/Mini-Ixora-Plant-01.webp", colorClass: "red" }
+    ];
+
+    let currentPage = 1;
+    const productsPerPage = 4;
+
+    function renderProducts() {
+      const start = (currentPage-1)*productsPerPage;
+      const end = start+productsPerPage;
+      const paginated = products.slice(start,end);
+      const grid = document.getElementById('productGrid');
+      grid.innerHTML = '';
+      paginated.forEach((p,i)=>{
+        const card = document.createElement('div');
+        card.className='product-card';
+        card.innerHTML=`
+          <img src="${p.img}" alt="${p.name}" class="product-image"/>
+          <div class="product-content">
+            <h3 class="product-name ${p.colorClass}">${p.name}</h3>
+            <p class="product-desc">${p.desc}</p>
+            <p class="product-price">${p.price}</p>
+            <button class="add-to-cart" onclick="addToCart(${start+i})">Add to Cart</button>
+          </div>`;
+        grid.appendChild(card);
+      });
+      document.getElementById('prevBtn').disabled=currentPage===1;
+      document.getElementById('nextBtn').disabled=end>=products.length;
+    }
+
+    function nextPage(){ if(currentPage*productsPerPage<products.length){ currentPage++; renderProducts(); } }
+    function prevPage(){ if(currentPage>1){ currentPage--; renderProducts(); } }
+
+    function addToCart(index){
+      const product = products[index];
+      productsSection.style.display='none';
+      cartSection.style.display='block';
+      document.getElementById('cartContent').innerHTML=`
+        <div class="cart-item">
+          <img src="${product.img}" alt="${product.name}"/>
+          <h3 class="${product.colorClass}">${product.name}</h3>
+          <p>${product.desc}</p>
+          <p class="product-price">${product.price}</p>
+        </div>`;
+    }
+
+    function goBackToProducts(){ cartSection.style.display='none'; productsSection.style.display='block'; renderProducts(); }
+
+    // Reviews data
+    const reviews = [
+      {name:"Likihitha", review:"Beautiful flowers, fresh and vibrant. Loved the experience.", stars:"★★★★☆", emoji:"😍"},
+      {name:"Somalatha", review:"Fast delivery and great packaging. Flowers were intact.", stars:"★★★★☆", emoji:"😊"},
+      {name:"Karthik", review:"The bouquet was amazing and lasted long. Very satisfied.", stars:"★★★★★", emoji:"😍"},
+      {name:"Tharun", review:"Nice colors, but a few flowers were slightly wilted.", stars:"★★★☆☆", emoji:"😐"},
+      {name:"Rohitha", review:"Great quality and amazing fragrance. Highly recommend!", stars:"★★★★☆", emoji:"😊"},
+      {name:"Chandrakala", review:"Service was good, flowers were fresh but delivery was late.", stars:"★★★★☆", emoji:"😞"},
+      {name:"Saikumar", review:"The arrangement was elegant and perfect for the occasion.", stars:"★★★★★", emoji:"😍"},
+      {name:"keerthi Reddy", review:"Flowers were nice, but customer support could improve.", stars:"★★★☆☆", emoji:"😐"},
+      {name:"Vamsi", review:"Absolutely stunning bouquet, exceeded expectations.", stars:"★★★★★", emoji:"😍"},
+      {name:"Lahari", review:"Nice quality, but delivery timing could be better.", stars:"★★★★☆", emoji:"😊"},
+      {name:"Manisha", review:"The fragrance was heavenly. Will order again soon!", stars:"★★★★★", emoji:"😍"},
+      {name:"Anusha", review:"Bouquet was beautiful but a little overpriced.", stars:"★★★★☆", emoji:"😐"},
+      {name:"Karthikeya", review:"Perfect surprise gift, my friend loved it!", stars:"★★★★★", emoji:"😍"},
+      {name:"Krishna", review:"Colors were vibrant and fresh, good service.", stars:"★★★★☆", emoji:"😊"},
+      {name:"Ishaan", review:"The best flower shop I've ordered from, highly recommend.", stars:"★★★★★", emoji:"😍"},
+      {name:"Lohitha", review:"Flowers were fresh but delivery was slightly late.", stars:"★★★★☆", emoji:"😐"},
+      {name:"pavani", review:"Amazing bouquet, colors were rich and lively.", stars:"★★★★★", emoji:"😍"},
+      {name:"srikanth", review:"Good flowers but packaging could be improved.", stars:"★★★★☆", emoji:"😞"},
+      {name:"Aaradhya", review:"Lovely arrangement and wonderful fragrance.", stars:"★★★★☆", emoji:"😊"},
+      {name:"Meera", review:"Overall good service, flowers lasted long.", stars:"★★★★☆", emoji:"😊"}
+    ];
+
+    function renderReviews() {
+      const container = document.getElementById('reviewsContainer');
+      container.innerHTML = '';
+      reviews.forEach(r=>{
+        const card = document.createElement('div');
+        card.className='card';
+        card.innerHTML=`
+          <div class="name">${r.name}</div>
+          <div class="review-text">${r.review}</div>
+          <div class="ratings"><span class="stars">${r.stars}</span><span class="emojis">${r.emoji}</span></div>`;
+        container.appendChild(card);
+      });
+    }
+  </script>
+</body>
+</html>

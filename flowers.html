@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bloom Boutique - Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background-image: url('https://img.freepik.com/premium-photo/rose-pink-gold-floral-frame-flower-frame-background_762785-41070.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Top Login Page Navbar */
+    .top-navbar {
+      width: 100%;
+      background-color: #ffebf0;
+      padding: 10px 30px;
+      display: flex;
+      justify-content: flex-end;
+      font-size: 0.95rem;
+    }
+
+    .top-navbar a {
+      color: #ff4d88;
+      text-decoration: none;
+      font-weight: bold;
+      margin-left: 20px;
+    }
+
+    .top-navbar a:hover {
+      text-decoration: underline;
+    }
+
+    /* Main Navbar */
+    header {
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ff4d88;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ff4d88;
+    }
+
+    .login-container {
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 8px 30px rgba(255, 105, 135, 0.2);
+      padding: 40px;
+      max-width: 400px;
+      width: 90%;
+      margin-top: 40px;
+    }
+
+    .login-container h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #ff4d88;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+      color: #444;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #ff4d88;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-top: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #e60073;
+    }
+
+    .social-login {
+      margin-top: 1.5rem;
+    }
+
+    .social-login button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 0.8rem;
+      border-radius: 8px;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    .google-btn {
+      background-color: #db4437;
+      color: white;
+    }
+
+    .google-btn:hover {
+      background-color: #c23321;
+    }
+
+    .facebook-btn {
+      background-color: #3b5998;
+      color: white;
+    }
+
+    .facebook-btn:hover {
+      background-color: #2d4373;
+    }
+
+    .signup {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .signup a {
+      color: #ff4d88;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .signup a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        margin-top: 10px;
+      }
+
+      nav a {
+        margin: 5px 10px;
+      }
+
+      .login-container {
+        padding: 25px;
+      }
+
+      .top-navbar {
+        justify-content: center;
+        padding: 10px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Login Page Navigation -->
+  <div class="top-navbar">
+    <a href="#">Login Page</a>
+  </div>
+
+  <!-- Main Site Navigation -->
+  <header>
+    <div class="logo">Bloom Boutique</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Products</a>
+      <a href="#">Reviews</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Login Form Section -->
+  <div class="login-container">
+    <h2>Login to Bloom Boutique</h2>
+    <form>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required />
+      </div>
+      <div class="form-group">
+        <label for="email">Email ID</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required />
+      </div>
+      <button type="submit" class="btn">Login</button>
+    </form>
+
+    <div class="social-login">
+      <button class="google-btn">
+        <i class="fab fa-google"></i> Continue with Google
+      </button>
+      <button class="facebook-btn">
+        <i class="fab fa-facebook-f"></i> Continue with Facebook
+      </button>
+    </div>
+
+    <div class="signup">
+      New to Bloom Boutique? <a href="#">Sign Up</a>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rainbow Flowers</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: url('https://img.freepik.com/premium-photo/rose-pink-gold-floral-frame-flower-frame-background_762785-41070.jpg') 
+                  no-repeat center center/cover;
+      color: white;
+      min-height: 100vh;
+    }
+
+    /* Navbar */
+    header {
+      width: 100%;
+      padding: 20px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    nav {
+      display: flex;
+      gap: 30px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ffd700;
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 100px 50px 50px;
+      gap: 40px;
+    }
+
+    .hero-text {
+      flex: 1;
+      max-width: 600px;
+    }
+
+    .hero-text h1 {
+      font-size: 50px;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    }
+
+    .hero-text p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    }
+
+    .hero-text button {
+      padding: 12px 30px;
+      font-size: 16px;
+      border: none;
+      border-radius: 25px;
+      background: #ff69b4;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .hero-text button:hover {
+      background: #ff1493;
+    }
+
+    .hero-image {
+      flex: 1;
+      text-align: right;
+    }
+
+    .hero-image img {
+      max-width: 450px;
+      border: none;          /* ✅ No border */
+      outline: none;         /* ✅ No outline */
+      background: transparent;  /* ✅ Transparent background */
+      mix-blend-mode: multiply; /* ✅ Remove white background look */
+      filter: brightness(1.1) contrast(1.3) drop-shadow(0 0 20px rgba(0,0,0,0.4));
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <div class="logo">Rainbow Flowers</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Products</a>
+      <a href="#">Reviews</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Flowers for Your Special Occasions</h1>
+      <p>
+        When flowers are our inspiration to create lasting memories, 
+        whatever the occasion, our flowers will make it special.
+      </p>
+      <button>Go To products</button>
+    </div>
+    <div class="hero-image">
+      <img src="https://toppng.com/uploads/preview/transparent-pink-roses-bouquetpicture-115466858831eulmpevdc.png" alt="Pink Roses Bouquet">
+    </div>
+  </section>
+
+</body>
+</html>

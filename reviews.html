@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flower Shop - Customer Ratings</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url('https://img.freepik.com/premium-photo/rose-pink-gold-floral-frame-flower-frame-background_762785-41070.jpg') no-repeat center center/cover;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Navigation Bar */
+    header {
+      width: 100%;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    /* 🌈 Rainbow Logo */
+    .logo {
+      font-size: 2em;
+      font-weight: bold;
+      background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    nav a {
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #b30059;
+    }
+
+    /* Section Title */
+    .section-title {
+      text-align: center;
+      margin: 40px 0 20px;
+      font-size: 2.2em;
+      font-weight: bold;
+      color: #b30059;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    }
+
+    /* Container for reviews */
+    .container {
+      padding: 20px 40px 60px;
+      max-width: 1200px;
+      width: 90%;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Cards */
+    .card {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      backdrop-filter: blur(6px);
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .name {
+      font-weight: bold;
+      margin-bottom: 8px;
+      font-size: 1.1em;
+      color: #222;
+    }
+
+    .review {
+      font-size: 0.9em;
+      color: #333;
+      margin-bottom: 12px;
+      line-height: 1.4em;
+      flex-grow: 1;
+    }
+
+    .ratings {
+      font-size: 1.1em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .stars {
+      color: gold;
+      font-size: 1.3em;
+    }
+
+    .emojis {
+      font-size: 1.3em;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header with Logo & Menu -->
+  <header>
+    <div class="logo">Rainbow Flowers</div>
+    <nav>
+      <a href="#">Login</a>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Products</a>
+      <a href="#">Reviews</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Reviews Section -->
+  <h1 class="section-title">💐 Reviews 💐</h1>
+
+  <div class="container">
+    <!-- Reviews Cards -->
+    <div class="card"><div class="name">Likihitha</div><div class="review">Beautiful flowers, fresh and vibrant. Loved the experience.</div><div class="ratings"><span class="stars">★★★★☆</span><span class="emojis">😍</span></div></div>
+    <div class="card"><div class="name">Somalatha</div><div class="review">Fast delivery and great packaging. Flowers were intact.</div><div class="ratings"><span class="stars">★★★★☆</span><span class="emojis">😊</span></div></div>
+    <div class="card"><div class="name">Karthik</div><div class="review">The bouquet was amazing and lasted long. Very satisfied.</div><div class="ratings"><span class="stars">★★★★★</span><span class="emojis">😍</span></div></div>
+    <div class="card"><div class="name">Tharun</div><div class="review">Nice colors, but a few flowers were slightly wilted.</div><div class="ratings"><span class="stars">★★★☆☆</span><span class="emojis">😐</span></div></div>
+    <div class="card"><div class="name">Rohitha</div><div class="review">Great quality and amazing fragrance. Highly recommend!</div><div class="ratings"><span class="stars">★★★★☆</span><span class="emojis">😊</span></div></div>
+    <div class="card"><div class="name">Chandrakala</div><div class="review">Service was good, flowers were fresh but delivery was late.</div><div class="ratings"><span class="stars">★★★★☆</span><span class="emojis">😞</span></div></div>
+    <div class="card"><div class="name">Saikumar</div><div class="review">The arrangement was elegant and perfect for the occasion.</div><div class="ratings"><span class="stars">★★★★★</span><span class="emojis">😍</span></div></div>
+    <div class="card"><div class="name">keerthi Reddy</div><div class="review">Flowers were nice, but customer support could improve.</div><div class="ratings"><span class="stars">★★★☆☆</span><span class="emojis">😐</span></div></div>
+    <div class="card"><div class="name">Vamsi</div><div class="review">Absolutely stunning bouquet, exceeded expectations.</div><div class="ratings"><span class="stars">★★★★★</span><span class="emojis">😍</span></div></div>
+    <div class="card"><div class="name">Lahari</div><div class="review">Nice quality, but delivery timing could be better.</div><div class="ratings"><span class="stars">★★★★☆</span><span class="emojis">😊</span></div></div>
+    <div class="card"><div class="name">Manisha</div><div class="review">The fragrance was heavenly. Will order again soon!</div><div class="ratings"><span class="stars">★★★★★</span><span class="emojis">😍</span></div></div>
+    <div class="card"><div class="name">Anusha</div><div class="review">Bouquet was beautiful but a little overpriced.</div><div class="ratings"><span class="stars">★★★★☆</span><span class="emojis">😐</span></div></div>
+    <div class="card"><div class="name">Karthikeya</div><div class="review">Perfect surprise gift, my friend loved it!</div><div class="ratings"><span class="stars">★★★★★</span><span class="emojis">😍</span></div></div>
+    <div class="card"><div class="name">Krishna</div><div class="review">Colors were vibrant and fresh, good service.</div><div class="ratings"><span class="stars">★★★★☆</span><span class="emojis">😊</span></div></div>
+    <div class="card"><div class="name">Ishaan</div><div class="review">The best flower shop I’ve ordered from, highly recommend.</div><div class="ratings"><span class="stars">★★★★★</span><span class="emojis">😍</span></div></div>
+    <div class="card"><div class="name">Lohitha</div><div class="review">Flowers were fresh but delivery was slightly late.</div><div class="ratings"><span class="stars">★★★★☆</span><span class="emojis">😐</span></div></div>
+    <div class="card"><div class="name">pavani</div><div class="review">Amazing bouquet, colors were rich and lively.</div><div class="ratings"><span class="stars">★★★★★</span><span class="emojis">😍</span></div></div>
+    <div class="card"><div class="name">srikanth</div><div class="review">Good flowers but packaging could be improved.</div><div class="ratings"><span class="stars">★★★★☆</span><span class="emojis">😞</span></div></div>
+    <div class="card"><div class="name">Aaradhya</div><div class="review">Lovely arrangement and wonderful fragrance.</div><div class="ratings"><span class="stars">★★★★☆</span><span class="emojis">😊</span></div></div>
+    <div class="card"><div class="name">Meera</div><div class="review">Overall good service, flowers lasted long.</div><div class="ratings"><span class="stars">★★★★☆</span><span class="emojis">😊</span></div></div>
+  </div>
+</body>
+</html>

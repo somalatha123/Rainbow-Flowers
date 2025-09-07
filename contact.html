@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rainbow Flowers - Contact Us</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-image: url('https://img.freepik.com/premium-photo/rose-pink-gold-floral-frame-flower-frame-background_762785-41070.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+    }
+
+    /* 🌸 Side Rainbow Flower Strips */
+    .side-left, .side-right {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      width: 80px;
+      z-index: 0;
+      background: linear-gradient(to bottom, red, orange, yellow, green, blue, indigo, violet);
+      opacity: 0.3;
+    }
+    .side-left {
+      left: 0;
+    }
+    .side-right {
+      right: 0;
+    }
+
+    /* Top Navbar */
+    header {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.85);
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-radius: 0 0 10px 10px;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #ff4d88;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ff4d88;
+    }
+
+    /* Contact Heading */
+    .contact-heading {
+      text-align: center;
+      font-size: 3rem;
+      font-weight: bold;
+      color: #ff4d88;
+      margin: 30px 0 10px 0;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    /* Main Contact Section */
+    .main-content {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+      z-index: 1;
+    }
+
+    .contact-container {
+      display: flex;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      overflow: hidden;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    /* Left Side - Form */
+    .contact-form {
+      flex: 1;
+      padding: 30px;
+    }
+
+    .contact-form h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+      color: #555;
+    }
+
+    .form-group i {
+      margin-right: 8px;
+      color: #ff4d88;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    textarea {
+      resize: none;
+      height: 100px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #ff4d88;
+      border: none;
+      border-radius: 6px;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #e60073;
+    }
+
+    /* Right Side - Google Map */
+    .contact-map {
+      flex: 1;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .contact-container {
+        flex-direction: column;
+      }
+      .contact-map {
+        height: 300px;
+      }
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .contact-heading {
+        font-size: 2.3rem;
+      }
+      .side-left, .side-right {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 🌸 Side Rainbow Color Strips -->
+  <div class="side-left"></div>
+  <div class="side-right"></div>
+
+  <!-- Top Navbar -->
+  <header>
+    <div class="logo">Rainbow Flowers</div>
+    <nav>
+      <a href="#">Login</a>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Products</a>
+      <a href="#">Reviews</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Contact Big Heading -->
+  <h1 class="contact-heading">Contact Us</h1>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <div class="contact-container">
+      <!-- Left Side Form -->
+      <div class="contact-form">
+        <h2>Get in Touch</h2>
+        <form>
+          <div class="form-group">
+            <label><i class="fa fa-user"></i> Full Name:</label>
+            <input type="text" required>
+          </div>
+          <div class="form-group">
+            <label><i class="fa fa-envelope"></i> Email Address:</label>
+            <input type="email" required>
+          </div>
+          <div class="form-group">
+            <label><i class="fa fa-phone"></i> Contact No:</label>
+            <input type="tel" required>
+          </div>
+          <div class="form-group">
+            <label><i class="fa fa-comment"></i> Write Message:</label>
+            <textarea required></textarea>
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+
+      <!-- Right Side Map -->
+      <div class="contact-map">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224345.50850287257!2d77.0688999!3d28.5272803!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce5089a1b1d75%3A0xbcd9c8e60b8e0f0!2sGeeksforGeeks!5e0!3m2!1sen!2sin!4v1695834559475!5m2!1sen!2sin" 
+          allowfullscreen="" loading="lazy">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
